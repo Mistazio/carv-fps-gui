@@ -1,380 +1,1113 @@
--- Gui to Lua
--- Version: 3.2
 
--- Instances:
 
-local ScreenGui = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local Frame_2 = Instance.new("Frame")
-local TextButton = Instance.new("TextButton")
-local TextButton_2 = Instance.new("TextButton")
-local TextButton_3 = Instance.new("TextButton")
-local TextButton_4 = Instance.new("TextButton")
-local TextLabel = Instance.new("TextLabel")
-local TextButton_5 = Instance.new("TextButton")
-
---Properties:
-
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(65, 0, 0)
-Frame.BackgroundTransparency = 0.400
-Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(0.268707484, 0, 0.189302891, 0)
-Frame.Size = UDim2.new(0, 318, 0, 34)
-
-Frame_2.Parent = Frame
-Frame_2.BackgroundColor3 = Color3.fromRGB(65, 0, 0)
-Frame_2.BackgroundTransparency = 0.800
-Frame_2.Position = UDim2.new(0, 0, 0.988572061, 0)
-Frame_2.Size = UDim2.new(0, 317, 0, 298)
-
-TextButton.Parent = Frame_2
-TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextButton.BackgroundTransparency = 2.000
-TextButton.Size = UDim2.new(0, 201, 0, 33)
-TextButton.Font = Enum.Font.SourceSans
-TextButton.Text = "Q toggle"
-TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextButton.TextScaled = true
-TextButton.TextSize = 14.000
-TextButton.TextWrapped = true
-
-TextButton_2.Parent = Frame_2
-TextButton_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextButton_2.BackgroundTransparency = 2.000
-TextButton_2.Position = UDim2.new(0, 0, 0.110231735, 0)
-TextButton_2.Size = UDim2.new(0, 201, 0, 33)
-TextButton_2.Font = Enum.Font.SourceSans
-TextButton_2.Text = "Smoothed"
-TextButton_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextButton_2.TextScaled = true
-TextButton_2.TextSize = 14.000
-TextButton_2.TextWrapped = true
-
-TextButton_3.Parent = Frame_2
-TextButton_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextButton_3.BackgroundTransparency = 2.000
-TextButton_3.Position = UDim2.new(-0.0018403281, 0, 0.218374059, 0)
-TextButton_3.Size = UDim2.new(0, 201, 0, 33)
-TextButton_3.Font = Enum.Font.SourceSans
-TextButton_3.Text = "Copy Advertise"
-TextButton_3.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextButton_3.TextScaled = true
-TextButton_3.TextSize = 14.000
-TextButton_3.TextWrapped = true
-
-TextButton_4.Parent = Frame_2
-TextButton_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextButton_4.BackgroundTransparency = 2.000
-TextButton_4.Position = UDim2.new(0.368065625, 0, 0.886159301, 0)
-TextButton_4.Size = UDim2.new(0, 201, 0, 33)
-TextButton_4.Font = Enum.Font.SourceSans
-TextButton_4.Text = "Copy rage loadstring"
-TextButton_4.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextButton_4.TextScaled = true
-TextButton_4.TextSize = 14.000
-TextButton_4.TextWrapped = true
-
-TextLabel.Parent = Frame
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.BackgroundTransparency = 3.000
-TextLabel.Size = UDim2.new(0, 201, 0, 33)
-TextLabel.Font = Enum.Font.SourceSans
-TextLabel.Text = "Carvs FPS GUI v0.2"
-TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextScaled = true
-TextLabel.TextSize = 14.000
-TextLabel.TextWrapped = true
-
-TextButton_5.Parent = Frame
-TextButton_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextButton_5.BackgroundTransparency = 2.000
-TextButton_5.Position = UDim2.new(0.853943467, 0, 0, 0)
-TextButton_5.Size = UDim2.new(0, 46, 0, 33)
-TextButton_5.Font = Enum.Font.SourceSans
-TextButton_5.Text = "-"
-TextButton_5.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextButton_5.TextScaled = true
-TextButton_5.TextSize = 14.000
-TextButton_5.TextWrapped = true
-
--- Scripts:
-
-local function CVJAVOZ_fake_script() -- TextButton.LocalScript 
-	local script = Instance.new('LocalScript', TextButton)
-
-	--put this in starterplayerscripts or startergui
-	
-	game:GetService("StarterGui"):SetCore("SendNotification", {
-		Title = "CARV LOCK"; --must be string
-		Text = "Lock was successfully loaded"; --must be string
-		Icon = "rbxassetid.12275825310"; --optional
-		Duration = 30; -- defaults to 5 secs if no duration is set
-		Button1 = "CARV is the best";
-	})
-	
-	
-	
-	
-	
-	getgenv().OldAimPart = "UpperTorso"
-	getgenv().AimPart = "HumanoidRootPart" -- For R15 Games: {UpperTorso, LowerTorso, HumanoidRootPart, Head} | For R6 Games: {Head, Torso, HumanoidRootPart}  
-	getgenv().AimlockKey = "q"
-	getgenv().AimRadius = 30 -- How far away from someones character you want to lock on at
-	getgenv().ThirdPerson = true
-	getgenv().FirstPerson = true
-	getgenv().TeamCheck = false -- Check if Target is on your Team (True means it wont lock onto your teamates, false is vice versa) (Set it to false if there are no teams)
-	getgenv().PredictMovement = true -- Predicts if they are moving in fast velocity (like jumping) so the aimbot will go a bit faster to match their speed 
-	getgenv().PredictionVelocity = 6.78211
-	getgenv().CheckIfJumped = true
-	getgenv().Smoothness = true
-	getgenv().SmoothnessAmount = 0.2
-	
-	local Players, Uis, RService, SGui = game:GetService"Players", game:GetService"UserInputService", game:GetService"RunService", game:GetService"StarterGui";
-	local Client, Mouse, Camera, CF, RNew, Vec3, Vec2 = Players.LocalPlayer, Players.LocalPlayer:GetMouse(), workspace.CurrentCamera, CFrame.new, Ray.new, Vector3.new, Vector2.new;
-	local Aimlock, MousePressed, CanNotify = true, false, false;
+local obf_stringchar = string.char;
+local obf_stringbyte = string.byte;
+local obf_stringsub = string.sub;
+local obf_bitlib = bit32 or bit;
+local obf_XOR = obf_bitlib.bxor;
+local obf_tableconcat = table.concat;
+local obf_tableinsert = table.insert;
+local function LUAOBFUSACTOR_DECRYPT_STR_0(LUAOBFUSACTOR_STR, LUAOBFUSACTOR_KEY)
+	local FlatIdent_563AF = 0;
+	local result;
+	while true do
+		if (0 == FlatIdent_563AF) then
+			result = {};
+			for i = 1, #LUAOBFUSACTOR_STR do
+				obf_tableinsert(result, obf_stringchar(obf_XOR(obf_stringbyte(obf_stringsub(LUAOBFUSACTOR_STR, i, i + (833 - (390 + 442)))), obf_stringbyte(obf_stringsub(LUAOBFUSACTOR_KEY, (88 - (60 + 27)) + ((i - (1 + 0)) % #LUAOBFUSACTOR_KEY), 1 + 0 + ((i - (1 + 0)) % #LUAOBFUSACTOR_KEY) + 1))) % (465 - (108 + 101))));
+			end
+			FlatIdent_563AF = 1578 - (173 + 1404);
+		end
+		if (FlatIdent_563AF == 1) then
+			return obf_tableconcat(result);
+		end
+	end
+end
+local ScreenGui = Instance.new(LUAOBFUSACTOR_DECRYPT_STR_0("\216\225\38\127\238\236\19\111\226", "\139\130\84\26"));
+local Frame = Instance.new(LUAOBFUSACTOR_DECRYPT_STR_0("\14\105\6\193\173", "\72\27\103\172\200\186\220"));
+local Frame_2 = Instance.new(LUAOBFUSACTOR_DECRYPT_STR_0("\119\169\115\223\194", "\49\219\18\178\167\66"));
+local TextButton = Instance.new(LUAOBFUSACTOR_DECRYPT_STR_0("\65\5\58\225\46\96\20\54\250\2", "\21\96\66\149\108"));
+local TextButton_2 = Instance.new(LUAOBFUSACTOR_DECRYPT_STR_0("\33\64\148\147\13\0\81\152\136\33", "\117\37\236\231\79"));
+local TextButton_3 = Instance.new(LUAOBFUSACTOR_DECRYPT_STR_0("\33\128\164\224\2\0\145\168\251\46", "\117\229\220\148\64"));
+local TextButton_4 = Instance.new(LUAOBFUSACTOR_DECRYPT_STR_0("\206\117\243\248\216\101\255\248\245\126", "\154\16\139\140"));
+local TextLabel = Instance.new(LUAOBFUSACTOR_DECRYPT_STR_0("\180\174\182\234\122\35\130\174\162", "\224\203\206\158\54\66"));
+local TextButton_5 = Instance.new(LUAOBFUSACTOR_DECRYPT_STR_0("\77\39\48\83\34\108\54\60\72\14", "\25\66\72\39\96"));
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild(LUAOBFUSACTOR_DECRYPT_STR_0("\180\4\217\98\162\194\62\216\141", "\228\104\184\27\199\176\121\173"));
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+Frame.Parent = ScreenGui;
+Frame.BackgroundColor3 = Color3.fromRGB((3458 - 2176) - ((923 - (677 + 157)) + 904 + 224), 0 + 0 + 0, (0 - 0) - (0 + 0));
+Frame.BackgroundTransparency = (563.4 - (365 + 198)) + (1961 - (1069 + 892));
+Frame.BorderSizePixel = (0 - 0) + (1760 - (660 + 1100));
+Frame.Position = UDim2.new(0.268707484, (0 + 0) - 0, 0.189302891 + 0 + (0 - 0), 0 - 0);
+Frame.Size = UDim2.new(0 - 0, 318, 0 + 0, 27 + (719 - (6 + 706)));
+Frame_2.Parent = Frame;
+Frame_2.BackgroundColor3 = Color3.fromRGB((408 - 257) - (1920 - (1585 + 249)), (184 + 57) - (6 + 172 + (167 - 104)), 0);
+Frame_2.BackgroundTransparency = (357.79999999999995 + 764) - ((1845 - 860) + (1153 - (565 + 452)));
+Frame_2.Position = UDim2.new(0 + (0 - 0), 571 - (132 + 439), 384.988572061 - ((1336 - (232 + 939)) + (651 - 432)), (992 - (829 + 163)) - (303 - (270 + 33)));
+Frame_2.Size = UDim2.new(0 - (397 - (276 + 121)), 1288 - (48 + 923), (1269 - (378 + 891)) - 0, (1472 - (152 + 429)) - (2318 - (498 + 1227)));
+TextButton.Parent = Frame_2;
+TextButton.BackgroundColor3 = Color3.fromRGB((3813 - (98 + 1875)) - ((2790 - 1966) + 761), (2702 - (806 + 931)) - (286 + 173 + 251), 887 - (1457 - 825));
+TextButton.BackgroundTransparency = (4 - 3) + 1 + 0;
+TextButton.Size = UDim2.new(0 - 0, (244 + 155) - (962 - 764), 0, (97 - 48) - (11 + 5));
+TextButton.Font = Enum.Font.SourceSans;
+TextButton.Text = LUAOBFUSACTOR_DECRYPT_STR_0("\71\6\73\64\200\113\74\88", "\22\38\61\47\175");
+TextButton.TextColor3 = Color3.fromRGB(432 - 177, 667 - 412, (5428 - 4238) - 935);
+TextButton.TextScaled = true;
+TextButton.TextSize = (724 - (251 + 461)) + 1 + 1;
+TextButton.TextWrapped = true;
+TextButton_2.Parent = Frame_2;
+TextButton_2.BackgroundColor3 = Color3.fromRGB((522 - 272) + (9 - 4), 255, (1044 - (931 + 25)) + (945 - (698 + 80)));
+TextButton_2.BackgroundTransparency = 1 + 1;
+TextButton_2.Position = UDim2.new(0, 0 + 0 + (0 - 0), 1074.110231735 - ((2215 - (777 + 970)) + 34 + 572), 0 - 0);
+TextButton_2.Size = UDim2.new(1000 - (164 + 836), (548 - 321) - (6 + 5 + 15), (1224 - (628 + 596)) + 0, 1337 - (555 + 749));
+TextButton_2.Font = Enum.Font.SourceSans;
+TextButton_2.Text = LUAOBFUSACTOR_DECRYPT_STR_0("\251\45\67\77\246\192\37\72", "\168\64\44\34\130");
+TextButton_2.TextColor3 = Color3.fromRGB((863 - 259) - 349, 1194 - ((970 - (148 + 539)) + 656), (1528 + 139) - (1304 + 9 + 99));
+TextButton_2.TextScaled = true;
+TextButton_2.TextSize = (19 - 11) + (26 - 20);
+TextButton_2.TextWrapped = true;
+TextButton_3.Parent = Frame_2;
+TextButton_3.BackgroundColor3 = Color3.fromRGB(106 + 149, 1944 - (1542 + 147), 1937 - ((1626 - 897) + 953));
+TextButton_3.BackgroundTransparency = 1 + 0 + (1690 - (771 + 918));
+TextButton_3.Position = UDim2.new(-0.0018403281, (1479 - (591 + 888)) - 0, 0.218374059 - 0, (0 - 0) + 0);
+TextButton_3.Size = UDim2.new((3073 - 1279) - ((2685 - (33 + 1482)) + (1749 - (564 + 561))), 89 + (567 - (23 + 432)), (259 - (142 + 117)) - 0, 1260 - (556 + 671));
+TextButton_3.Font = Enum.Font.SourceSans;
+TextButton_3.Text = LUAOBFUSACTOR_DECRYPT_STR_0("\120\167\190\105\119\122\172\184\117\37\79\161\189\117", "\59\200\206\16\87");
+TextButton_3.TextColor3 = Color3.fromRGB((339 - 252) + (1700 - (724 + 808)), 255, (1852 - (598 + 13)) - ((2165 - (631 + 724)) + 176));
+TextButton_3.TextScaled = true;
+TextButton_3.TextSize = 14 + 0;
+TextButton_3.TextWrapped = true;
+TextButton_4.Parent = Frame_2;
+TextButton_4.BackgroundColor3 = Color3.fromRGB((4588 - 3646) - ((1252 - (233 + 565)) + 209 + 24), (268 - 165) + (1054 - (444 + 458)), (1252 - 481) - (1726 - (858 + 352)));
+TextButton_4.BackgroundTransparency = (3 - 0) - 1;
+TextButton_4.Position = UDim2.new((0.368065625 - 0) + 0, (89 + 558) - ((910 - (208 + 364)) + 309), 0.886159301 - 0, 0 + 0 + (0 - 0));
+TextButton_4.Size = UDim2.new((1038 - (8 + 1030)) - 0, 25 + 45 + 131, (0 - 0) + (67 - (51 + 16)), 150 - (144 - 27));
+TextButton_4.Font = Enum.Font.SourceSans;
+TextButton_4.Text = LUAOBFUSACTOR_DECRYPT_STR_0("\243\11\154\19\231\194\5\141\15\231\220\11\139\14\180\196\22\131\4\160", "\176\100\234\106\199");
+TextButton_4.TextColor3 = Color3.fromRGB((573 - 215) - (432 - 329), 228 + 27, (1006 - 289) - (1964 - 1502));
+TextButton_4.TextScaled = true;
+TextButton_4.TextSize = (1688 - 711) - (55 + 179 + 414 + 315);
+TextButton_4.TextWrapped = true;
+TextLabel.Parent = Frame;
+TextLabel.BackgroundColor3 = Color3.fromRGB((61 + 892) - 698, 471 - ((178 - 76) + 114), 721 - 466);
+TextLabel.BackgroundTransparency = 3;
+TextLabel.Size = UDim2.new(0, 1884 - (391 + 1292), (0 - 0) + 0, 33);
+TextLabel.Font = Enum.Font.SourceSans;
+TextLabel.Text = LUAOBFUSACTOR_DECRYPT_STR_0("\93\172\56\158\89\231\88\157\25\200\109\146\87\237\60\216\4\245", "\30\205\74\232\42\199");
+TextLabel.TextColor3 = Color3.fromRGB(2069 - (853 + 961), (3599 - 2440) - 904, (382 + 209) - (333 + 3));
+TextLabel.TextScaled = true;
+TextLabel.TextSize = (49 - 37) + 2;
+TextLabel.TextWrapped = true;
+TextButton_5.Parent = Frame;
+TextButton_5.BackgroundColor3 = Color3.fromRGB(15 + 102 + (913 - (455 + 320)), 1789 - ((2004 - (1310 + 683)) + 1523), 670 - 415);
+TextButton_5.BackgroundTransparency = 3 - 1;
+TextButton_5.Position = UDim2.new(0.853943467, (1951 - (376 + 1575)) - (0 - 0), (2969 - (208 + 791)) - (901 + 290 + (2004 - (400 + 825))), (964 - (375 + 589)) + 0 + 0);
+TextButton_5.Size = UDim2.new(0 + 0, 34 + 12, (2354 - 596) - ((1373 - (16 + 49)) + 450), 130 - (31 + 66));
+TextButton_5.Font = Enum.Font.SourceSans;
+TextButton_5.Text = "-";
+TextButton_5.TextColor3 = Color3.fromRGB(790 - (945 - 410), 359 - 104, (323 - 130) + 62);
+TextButton_5.TextScaled = true;
+TextButton_5.TextSize = (2086 - (564 + 635)) - ((2945 - 2138) + 3 + 63);
+TextButton_5.TextWrapped = true;
+local function CVJAVOZ_fake_script()
+	local FlatIdent_31B0E = (0 - 0) + (0 - 0);
+	local script;
+	local Players;
+	local Uis;
+	local RService;
+	local SGui;
+	local Client;
+	local Mouse;
+	local Camera;
+	local CF;
+	local RNew;
+	local Vec3;
+	local Vec2;
+	local Aimlock;
+	local MousePressed;
+	local CanNotify;
 	local AimlockTarget;
 	local OldPre;
-	
-	
-	
-	getgenv().WorldToViewportPoint = function(P)
-		return Camera:WorldToViewportPoint(P)
-	end
-	
-	getgenv().WorldToScreenPoint = function(P)
-		return Camera.WorldToScreenPoint(Camera, P)
-	end
-	
-	getgenv().GetObscuringObjects = function(T)
-		if T and T:FindFirstChild(getgenv().AimPart) and Client and Client.Character:FindFirstChild("Head") then 
-			local RayPos = workspace:FindPartOnRay(RNew(
-				T[getgenv().AimPart].Position, Client.Character.Head.Position)
-			)
-			if RayPos then return RayPos:IsDescendantOf(T) end
-		end
-	end
-	
-	getgenv().GetNearestTarget = function()
-		-- Credits to whoever made this, i didnt make it, and my own mouse2plr function kinda sucks
-		local players = {}
-		local PLAYER_HOLD  = {}
-		local DISTANCES = {}
-		for i, v in pairs(Players:GetPlayers()) do
-			if v ~= Client then
-				table.insert(players, v)
-			end
-		end
-		for i, v in pairs(players) do
-			if v.Character ~= nil then
-				local AIM = v.Character:FindFirstChild("Head")
-				if getgenv().TeamCheck == true and v.Team ~= Client.Team then
-					local DISTANCE = (v.Character:FindFirstChild("Head").Position - game.Workspace.CurrentCamera.CFrame.p).magnitude
-					local RAY = Ray.new(game.Workspace.CurrentCamera.CFrame.p, (Mouse.Hit.p - game.Workspace.CurrentCamera.CFrame.p).unit * DISTANCE)
-					local HIT,POS = game.Workspace:FindPartOnRay(RAY, game.Workspace)
-					local DIFF = math.floor((POS - AIM.Position).magnitude)
-					PLAYER_HOLD[v.Name .. i] = {}
-					PLAYER_HOLD[v.Name .. i].dist= DISTANCE
-					PLAYER_HOLD[v.Name .. i].plr = v
-					PLAYER_HOLD[v.Name .. i].diff = DIFF
-					table.insert(DISTANCES, DIFF)
-				elseif getgenv().TeamCheck == false and v.Team == Client.Team then 
-					local DISTANCE = (v.Character:FindFirstChild("Head").Position - game.Workspace.CurrentCamera.CFrame.p).magnitude
-					local RAY = Ray.new(game.Workspace.CurrentCamera.CFrame.p, (Mouse.Hit.p - game.Workspace.CurrentCamera.CFrame.p).unit * DISTANCE)
-					local HIT,POS = game.Workspace:FindPartOnRay(RAY, game.Workspace)
-					local DIFF = math.floor((POS - AIM.Position).magnitude)
-					PLAYER_HOLD[v.Name .. i] = {}
-					PLAYER_HOLD[v.Name .. i].dist= DISTANCE
-					PLAYER_HOLD[v.Name .. i].plr = v
-					PLAYER_HOLD[v.Name .. i].diff = DIFF
-					table.insert(DISTANCES, DIFF)
+	while true do
+		if (FlatIdent_31B0E == 0) then
+			local FlatIdent_3D261 = 0 - 0;
+			while true do
+				if (FlatIdent_3D261 == (1554 - (279 + 1273))) then
+					FlatIdent_31B0E = 1 + 0 + (0 - 0);
+					break;
+				end
+				if (FlatIdent_3D261 == (1 + 0)) then
+					getgenv().OldAimPart = LUAOBFUSACTOR_DECRYPT_STR_0("\61\102\111\221\163\103\46\26\101\112", "\104\22\31\184\209\51\65");
+					getgenv().AimPart = LUAOBFUSACTOR_DECRYPT_STR_0("\109\156\189\85\201\74\128\180\102\200\74\157\128\85\213\81", "\37\233\208\52\167");
+					FlatIdent_3D261 = 2 + 0;
+				end
+				if (FlatIdent_3D261 == (1044 - (576 + 468))) then
+					script = Instance.new(LUAOBFUSACTOR_DECRYPT_STR_0("\81\217\191\250\113\229\191\233\116\198\168", "\29\182\220\155"), TextButton);
+					game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\178\45\30\179\25\132\43\56\180\4", "\225\89\127\193\109")):SetCore(LUAOBFUSACTOR_DECRYPT_STR_0("\177\205\4\238\172\199\30\227\132\193\9\235\150\193\5\228", "\226\168\106\138"), {[LUAOBFUSACTOR_DECRYPT_STR_0("\241\41\57\190\13", "\165\64\77\210\104\148")]=LUAOBFUSACTOR_DECRYPT_STR_0("\169\128\247\39\205\170\91\149\161", "\234\193\165\113\237\230\20\214"),[LUAOBFUSACTOR_DECRYPT_STR_0("\52\81\0\225", "\96\52\120\149\67")]=LUAOBFUSACTOR_DECRYPT_STR_0("\31\92\47\186\174\159\50\64\108\162\251\139\48\86\63\162\232\157\63\95\53\241\226\135\50\87\41\181", "\83\51\76\209\142\232"),[LUAOBFUSACTOR_DECRYPT_STR_0("\158\162\20\78", "\215\193\123\32")]=LUAOBFUSACTOR_DECRYPT_STR_0("\163\65\228\213\175\225\180\87\245\208\242\163\227\17\171\129\228\160\228\16\173\132", "\209\35\156\180\220\146"),[LUAOBFUSACTOR_DECRYPT_STR_0("\201\81\70\47\215\197\14\35", "\141\36\52\78\163\172\97\77")]=(109 - 79),[LUAOBFUSACTOR_DECRYPT_STR_0("\2\217\27\219\47\194\94", "\64\172\111\175")]=LUAOBFUSACTOR_DECRYPT_STR_0("\205\115\182\3\101\9\253\18\144\61\32\64\236\87\151\33", "\142\50\228\85\69\96")});
+					FlatIdent_3D261 = 1 + 0;
 				end
 			end
 		end
-	
-		if unpack(DISTANCES) == nil then
-			return nil
-		end
-	
-		local L_DISTANCE = math.floor(math.min(unpack(DISTANCES)))
-		if L_DISTANCE > getgenv().AimRadius then
-			return nil
-		end
-	
-		for i, v in pairs(PLAYER_HOLD) do
-			if v.diff == L_DISTANCE then
-				return v.plr
-			end
-		end
-		return nil
-	end
-	
-	Mouse.KeyDown:Connect(function(a)
-		if not (Uis:GetFocusedTextBox()) then 
-			if a == AimlockKey and AimlockTarget == nil then
-				pcall(function()
-					if MousePressed ~= true then MousePressed = true end 
-					local Target;Target = GetNearestTarget()
-					if Target ~= nil then 
-						AimlockTarget = Target
-					end
-				end)
-			elseif a == AimlockKey and AimlockTarget ~= nil then
-				if AimlockTarget ~= nil then AimlockTarget = nil end
-				if MousePressed ~= false then 
-					MousePressed = false 
+		if (FlatIdent_31B0E == 4) then
+			local FlatIdent_39ED8 = 0 + 0;
+			while true do
+				if (FlatIdent_39ED8 == 0) then
+					Aimlock, MousePressed, CanNotify = true, false, false;
+					AimlockTarget = nil;
+					FlatIdent_39ED8 = 1;
+				end
+				if ((2 + 0) == FlatIdent_39ED8) then
+					FlatIdent_31B0E = 5 + (1331 - (719 + 612));
+					break;
+				end
+				if (FlatIdent_39ED8 == (4 - 3)) then
+					OldPre = nil;
+					getgenv()[LUAOBFUSACTOR_DECRYPT_STR_0("\43\255\77\179\62\50\19\198\86\186\45\22\19\226\75\143\53\15\18\228", "\124\144\63\223\90\102")] = function(P)
+						return Camera:WorldToViewportPoint(P);
+					end;
+					FlatIdent_39ED8 = 2;
 				end
 			end
 		end
-	end)
-	
-	RService.RenderStepped:Connect(function()
-		if getgenv().ThirdPerson == true and getgenv().FirstPerson == true then 
-			if (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude > 1 or (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude <= 1 then 
-				CanNotify = true 
-			else 
-				CanNotify = false 
-			end
-		elseif getgenv().ThirdPerson == true and getgenv().FirstPerson == false then 
-			if (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude > 1 then 
-				CanNotify = true 
-			else 
-				CanNotify = false 
-			end
-		elseif getgenv().ThirdPerson == false and getgenv().FirstPerson == true then 
-			if (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude <= 1 then 
-				CanNotify = true 
-			else 
-				CanNotify = false 
+		if (FlatIdent_31B0E == 1) then
+			local FlatIdent_7BCC8 = 0;
+			while true do
+				if (FlatIdent_7BCC8 == 2) then
+					FlatIdent_31B0E = (4 + 3) - 5;
+					break;
+				end
+				if (FlatIdent_7BCC8 == (0 + 0)) then
+					getgenv().AimlockKey = "q";
+					getgenv().AimRadius = (112 - 48) - 34;
+					FlatIdent_7BCC8 = 1679 - (1555 + 123);
+				end
+				if (FlatIdent_7BCC8 == 1) then
+					getgenv().ThirdPerson = true;
+					getgenv().FirstPerson = true;
+					FlatIdent_7BCC8 = 1 + 1;
+				end
 			end
 		end
-		if Aimlock == true and MousePressed == true then 
-			if AimlockTarget and AimlockTarget.Character and AimlockTarget.Character:FindFirstChild(getgenv().AimPart) then 
-				if getgenv().FirstPerson == true then
-					if CanNotify == true then
-						if getgenv().PredictMovement == true then
-							if getgenv().Smoothness == true then
-								--// The part we're going to lerp/smoothen \\--
-								local Main = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().AimPart].Position + AimlockTarget.Character[getgenv().AimPart].Velocity/PredictionVelocity)
-	
-								--// Making it work \\--
-								Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().SmoothnessAmount, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut)
-							else
-								Camera.CFrame = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().AimPart].Position + AimlockTarget.Character[getgenv().AimPart].Velocity/PredictionVelocity)
+		if (FlatIdent_31B0E == ((4 - 3) + (3 - 2))) then
+			getgenv().TeamCheck = false;
+			getgenv().PredictMovement = true;
+			getgenv().PredictionVelocity = (3.7821100000000003 - 1) + 4;
+			getgenv().CheckIfJumped = true;
+			FlatIdent_31B0E = 1723 - (895 + 825);
+		end
+		if ((21 - 16) == FlatIdent_31B0E) then
+			local FlatIdent_634D9 = 0 + 0;
+			while true do
+				if (FlatIdent_634D9 == (827 - (79 + 747))) then
+					getgenv()[LUAOBFUSACTOR_DECRYPT_STR_0("\52\200\145\203\88\226\1\200\150\241\105\226\1\202\128\241", "\115\173\229\133\61\131")] = function()
+						local FlatIdent_8AB62 = (561 + 289) - (2 + 237 + 81 + 530);
+						local players;
+						local PLAYER_HOLD;
+						local DISTANCES;
+						local L_DISTANCE;
+						while true do
+							local FlatIdent_85564 = 0;
+							local FlatIdent_5218A;
+							while true do
+								if (FlatIdent_85564 == (427 - (171 + 256))) then
+									FlatIdent_5218A = 0;
+									while true do
+										if (FlatIdent_5218A == (0 - 0)) then
+											if (FlatIdent_8AB62 == ((3464 - 2060) - (222 + 542 + 636))) then
+												local FlatIdent_3F633 = 0;
+												while true do
+													if (FlatIdent_3F633 == ((1792 + 89) - (494 + 689 + 698))) then
+														local FlatIdent_7160D = 0;
+														while true do
+															if (FlatIdent_7160D == (0 + 0)) then
+																for i, v in pairs(PLAYER_HOLD) do
+																	if (v.diff == L_DISTANCE) then
+																		return v.plr;
+																	end
+																end
+																return nil;
+															end
+														end
+													end
+												end
+											end
+											if (FlatIdent_8AB62 == (5 - 2)) then
+												L_DISTANCE = math.floor(math.min(unpack(DISTANCES)));
+												if (L_DISTANCE > getgenv().AimRadius) then
+													return nil;
+												end
+												FlatIdent_8AB62 = 4 + 0;
+											end
+											FlatIdent_5218A = 1948 - (628 + 1069 + (364 - 114));
+										end
+										if (FlatIdent_5218A == ((8 - 5) - (2 + 0))) then
+											if (FlatIdent_8AB62 == (1923 - (290 + 1631))) then
+												local FlatIdent_292C4 = 0 - 0;
+												local FlatIdent_3BB7D;
+												while true do
+													if (FlatIdent_292C4 == (482 - (475 + 7))) then
+														FlatIdent_3BB7D = 0 + 0;
+														while true do
+															if (((1012 - 753) - ((611 - 426) + (206 - 133))) == FlatIdent_3BB7D) then
+																FlatIdent_8AB62 = 5 - 2;
+																break;
+															end
+															if (((902 - (549 + 353)) + (0 - 0)) == FlatIdent_3BB7D) then
+																for i, v in pairs(players) do
+																	if (v.Character ~= nil) then
+																		local FlatIdent_69833 = 0;
+																		local FlatIdent_50957;
+																		local FlatIdent_4E93F;
+																		local AIM;
+																		while true do
+																			if (FlatIdent_69833 == (0 + 0)) then
+																				FlatIdent_50957 = (60 + 41) - (18 + 83);
+																				FlatIdent_4E93F = nil;
+																				FlatIdent_69833 = 1 + 0;
+																			end
+																			if ((1859 - (259 + 1599)) == FlatIdent_69833) then
+																				AIM = nil;
+																				while true do
+																					if (FlatIdent_50957 == ((12 - 9) - (2 + 0))) then
+																						while true do
+																							if (FlatIdent_4E93F == ((0 - 0) - 0)) then
+																								AIM = v.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\115\167\203\179", "\59\194\170\215\35\33\71\211"));
+																								if ((getgenv().TeamCheck == true) and (v.Team ~= Client.Team)) then
+																									local FlatIdent_9F16 = (0 - 0) + 0;
+																									local DISTANCE;
+																									local RAY;
+																									local HIT;
+																									local POS;
+																									local DIFF;
+																									while true do
+																										if (FlatIdent_9F16 == (7 - 4)) then
+																											PLAYER_HOLD[v.Name .. i].plr = v;
+																											PLAYER_HOLD[v.Name .. i].diff = DIFF;
+																											FlatIdent_9F16 = (953 - (324 + 621)) - (3 + 1);
+																										end
+																										if (FlatIdent_9F16 == 2) then
+																											PLAYER_HOLD[v.Name .. i] = {};
+																											PLAYER_HOLD[v.Name .. i].dist = DISTANCE;
+																											FlatIdent_9F16 = (3 + 5) - 5;
+																										end
+																										if (FlatIdent_9F16 == (13 - (1504 - (900 + 595)))) then
+																											table.insert(DISTANCES, DIFF);
+																											break;
+																										end
+																										if (FlatIdent_9F16 == (0 + 0)) then
+																											local FlatIdent_7D5B0 = 122 - (35 + 87);
+																											local FlatIdent_19C18;
+																											while true do
+																												if (FlatIdent_7D5B0 == 0) then
+																													FlatIdent_19C18 = (2387 - (921 + 672)) - ((2660 - 1874) + (35 - 27));
+																													while true do
+																														if (FlatIdent_19C18 == (0 + 0)) then
+																															local FlatIdent_88BA5 = 560 - (518 + 42);
+																															while true do
+																																if (FlatIdent_88BA5 == 1) then
+																																	FlatIdent_19C18 = (1 + 0) - (0 + 0);
+																																	break;
+																																end
+																																if (FlatIdent_88BA5 == (0 + 0)) then
+																																	DISTANCE = (v.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\49\227\138\52", "\121\134\235\80\29\32")).Position - game.Workspace.CurrentCamera.CFrame["p"]).magnitude;
+																																	RAY = Ray.new(game.Workspace.CurrentCamera.CFrame["p"], (Mouse.Hit["p"] - game.Workspace.CurrentCamera.CFrame["p"]).unit * DISTANCE);
+																																	FlatIdent_88BA5 = 3 - 2;
+																																end
+																															end
+																														end
+																														if (FlatIdent_19C18 == (1 + 0 + 0)) then
+																															FlatIdent_9F16 = (1644 - (742 + 840)) - ((135 - 87) + 12 + 1);
+																															break;
+																														end
+																													end
+																													break;
+																												end
+																											end
+																										end
+																										if ((2 - 1) == FlatIdent_9F16) then
+																											HIT, POS = game.Workspace:FindPartOnRay(RAY, game.Workspace);
+																											DIFF = math.floor((POS - AIM.Position).magnitude);
+																											FlatIdent_9F16 = 1964 - (114 + 1848);
+																										end
+																									end
+																								elseif ((getgenv().TeamCheck == false) and (v.Team == Client.Team)) then
+																									local FlatIdent_8C871 = (0 - 0) - (1130 - (342 + 788));
+																									local FlatIdent_8FD01;
+																									local DISTANCE;
+																									local RAY;
+																									local HIT;
+																									local POS;
+																									local DIFF;
+																									while true do
+																										if (FlatIdent_8C871 == (6 - 3)) then
+																											while true do
+																												if (FlatIdent_8FD01 == 4) then
+																													table.insert(DISTANCES, DIFF);
+																													break;
+																												end
+																												if (FlatIdent_8FD01 == 0) then
+																													local FlatIdent_5BC0B = 0 + 0;
+																													while true do
+																														if (0 == FlatIdent_5BC0B) then
+																															DISTANCE = (v.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\237\193\114\188", "\165\164\19\216\142")).Position - game.Workspace.CurrentCamera.CFrame["p"]).magnitude;
+																															RAY = Ray.new(game.Workspace.CurrentCamera.CFrame["p"], (Mouse.Hit["p"] - game.Workspace.CurrentCamera.CFrame["p"]).unit * DISTANCE);
+																															FlatIdent_5BC0B = 1;
+																														end
+																														if (FlatIdent_5BC0B == (250 - (53 + 196))) then
+																															FlatIdent_8FD01 = 1 + 0 + 0 + 0;
+																															break;
+																														end
+																													end
+																												end
+																												if (FlatIdent_8FD01 == (1 + 1 + (455 - (440 + 15)))) then
+																													local FlatIdent_349BB = (375 - (323 + 52)) + (0 - 0);
+																													local FlatIdent_2B4C3;
+																													while true do
+																														if (FlatIdent_349BB == ((377 - 189) - (33 + (329 - 174)))) then
+																															FlatIdent_2B4C3 = (895 - 289) - (584 + 22);
+																															while true do
+																																if (FlatIdent_2B4C3 == (1 + 0 + (0 - 0))) then
+																																	FlatIdent_8FD01 = 544 - ((627 - 428) + 342);
+																																	break;
+																																end
+																																if (FlatIdent_2B4C3 == (61 - (24 + 37))) then
+																																	PLAYER_HOLD[v.Name .. i] = {};
+																																	PLAYER_HOLD[v.Name .. i].dist = DISTANCE;
+																																	FlatIdent_2B4C3 = (690 - (440 + 247)) - 2;
+																																end
+																															end
+																															break;
+																														end
+																													end
+																												end
+																												if (FlatIdent_8FD01 == ((125 - (67 + 56)) - (1 + 0))) then
+																													local FlatIdent_2A3E6 = 439 - (235 + 204);
+																													while true do
+																														if (FlatIdent_2A3E6 == (1 + 0)) then
+																															FlatIdent_8FD01 = (196 + 786) - (329 + 547 + (297 - 193));
+																															break;
+																														end
+																														if (FlatIdent_2A3E6 == (0 - 0)) then
+																															HIT, POS = game.Workspace:FindPartOnRay(RAY, game.Workspace);
+																															DIFF = math.floor((POS - AIM.Position).magnitude);
+																															FlatIdent_2A3E6 = 2 - 1;
+																														end
+																													end
+																												end
+																												if (FlatIdent_8FD01 == (9 - 6)) then
+																													local FlatIdent_3038E = 0;
+																													while true do
+																														if (FlatIdent_3038E == 1) then
+																															FlatIdent_8FD01 = (11 + 1) - (904 - (581 + 315));
+																															break;
+																														end
+																														if (FlatIdent_3038E == (0 - 0)) then
+																															PLAYER_HOLD[v.Name .. i].plr = v;
+																															PLAYER_HOLD[v.Name .. i].diff = DIFF;
+																															FlatIdent_3038E = 1 + 0;
+																														end
+																													end
+																												end
+																											end
+																											break;
+																										end
+																										if (FlatIdent_8C871 == (0 + 0)) then
+																											FlatIdent_8FD01 = (2880 - (663 + 321)) - (1014 + 485 + 397);
+																											DISTANCE = nil;
+																											FlatIdent_8C871 = 3 - 2;
+																										end
+																										if (FlatIdent_8C871 == (1 + (1 - 0))) then
+																											POS = nil;
+																											DIFF = nil;
+																											FlatIdent_8C871 = (51 - 38) - 10;
+																										end
+																										if (1 == FlatIdent_8C871) then
+																											local FlatIdent_8DA53 = 241 - (77 + 164);
+																											while true do
+																												if (0 == FlatIdent_8DA53) then
+																													RAY = nil;
+																													HIT = nil;
+																													FlatIdent_8DA53 = 1;
+																												end
+																												if (FlatIdent_8DA53 == (486 - (479 + 6))) then
+																													FlatIdent_8C871 = (2491 - 1568) - (279 + 642);
+																													break;
+																												end
+																											end
+																										end
+																									end
+																								end
+																								break;
+																							end
+																						end
+																						break;
+																					end
+																					if (FlatIdent_50957 == ((63 + 272) - ((1828 - (113 + 1580)) + 200))) then
+																						local FlatIdent_7FFA8 = (0 - 0) + (0 - 0);
+																						while true do
+																							if (FlatIdent_7FFA8 == ((1129 - (785 + 341)) - (5 - 3))) then
+																								FlatIdent_50957 = 1865 - (778 + 1086);
+																								break;
+																							end
+																							if (FlatIdent_7FFA8 == (0 + (137 - (23 + 114)))) then
+																								local FlatIdent_78C26 = 0;
+																								while true do
+																									if (FlatIdent_78C26 == (1820 - (1779 + 40))) then
+																										FlatIdent_7FFA8 = (828 - (232 + 594)) - 1;
+																										break;
+																									end
+																									if ((1932 - (1638 + 294)) == FlatIdent_78C26) then
+																										FlatIdent_4E93F = 0 + 0;
+																										AIM = nil;
+																										FlatIdent_78C26 = 1599 - (1496 + 102);
+																									end
+																								end
+																							end
+																						end
+																					end
+																				end
+																				break;
+																			end
+																		end
+																	end
+																end
+																if (unpack(DISTANCES) == nil) then
+																	return nil;
+																end
+																FlatIdent_3BB7D = 1759 - ((3477 - (1738 + 194)) + 213);
+															end
+														end
+														break;
+													end
+												end
+											end
+											if (FlatIdent_8AB62 == (1172 - ((2255 - (1051 + 884)) + 852))) then
+												local FlatIdent_12B16 = 1213 - (306 + 907);
+												while true do
+													if (FlatIdent_12B16 == (1420 - (733 + 687))) then
+														players = {};
+														PLAYER_HOLD = {};
+														FlatIdent_12B16 = 1;
+													end
+													if (FlatIdent_12B16 == (1 + 0)) then
+														FlatIdent_8AB62 = 1760 - (885 + 874);
+														break;
+													end
+												end
+											end
+											FlatIdent_5218A = 6 - 4;
+										end
+										if (FlatIdent_5218A == (1 + 1)) then
+											if (FlatIdent_8AB62 == (1 + (0 - 0))) then
+												local FlatIdent_76BC5 = 288 - (273 + 15);
+												local FlatIdent_12329;
+												while true do
+													if (FlatIdent_76BC5 == (0 + 0)) then
+														FlatIdent_12329 = (0 + 0) - (0 - 0);
+														while true do
+															if (((329 - (174 + 155)) - (1763 - (69 + 1694))) == FlatIdent_12329) then
+																DISTANCES = {};
+																for i, v in pairs(Players:GetPlayers()) do
+																	if (v ~= Client) then
+																		table.insert(players, v);
+																	end
+																end
+																FlatIdent_12329 = (949 - (284 + 664)) + (0 - 0);
+															end
+															if (FlatIdent_12329 == ((1292 - (1214 + 76)) - (1 + 0))) then
+																FlatIdent_8AB62 = 1 + 1;
+																break;
+															end
+														end
+														break;
+													end
+												end
+											end
+											break;
+										end
+									end
+									break;
+								end
 							end
-						elseif getgenv().PredictMovement == false then 
-							if getgenv().Smoothness == true then
-								--// The part we're going to lerp/smoothen \\--
-								local Main = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().AimPart].Position)
-	
-								--// Making it work \\--
-								Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().SmoothnessAmount, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut)
-							else
-								Camera.CFrame = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().AimPart].Position)
+						end
+					end;
+					Mouse.KeyDown:Connect(function(a)
+						if not (Uis:GetFocusedTextBox()) then
+							if ((a == AimlockKey) and (AimlockTarget == nil)) then
+								pcall(function()
+									local FlatIdent_9102C = 0;
+									local FlatIdent_1192E;
+									local Target;
+									while true do
+										if (FlatIdent_9102C == 1) then
+											while true do
+												if (((117 + 537) - (2 + 166 + 485)) == FlatIdent_1192E) then
+													Target = GetNearestTarget();
+													if (Target ~= nil) then
+														AimlockTarget = Target;
+													end
+													break;
+												end
+												if (FlatIdent_1192E == ((99 + 1851) - ((660 - 136) + 500 + 926))) then
+													local FlatIdent_1DA70 = 0 + 0;
+													while true do
+														if (FlatIdent_1DA70 == 1) then
+															FlatIdent_1192E = (670 - (401 + 268)) + 0 + 0;
+															break;
+														end
+														if (FlatIdent_1DA70 == (0 - 0)) then
+															if (MousePressed ~= true) then
+																MousePressed = true;
+															end
+															Target = nil;
+															FlatIdent_1DA70 = 1415 - (204 + 1210);
+														end
+													end
+												end
+											end
+											break;
+										end
+										if (FlatIdent_9102C == (0 + 0)) then
+											FlatIdent_1192E = 0 + 0;
+											Target = nil;
+											FlatIdent_9102C = 1 + 0;
+										end
+									end
+								end);
+							elseif ((a == AimlockKey) and (AimlockTarget ~= nil)) then
+								local FlatIdent_3B04A = 0;
+								local FlatIdent_71586;
+								while true do
+									if (FlatIdent_3B04A == 0) then
+										FlatIdent_71586 = 0 - 0;
+										while true do
+											if (FlatIdent_71586 == (0 + 0 + 0 + 0)) then
+												if (AimlockTarget ~= nil) then
+													AimlockTarget = nil;
+												end
+												if (MousePressed ~= false) then
+													MousePressed = false;
+												end
+												break;
+											end
+										end
+										break;
+									end
+								end
 							end
+						end
+					end);
+					FlatIdent_634D9 = 8 - 6;
+				end
+				if (2 == FlatIdent_634D9) then
+					FlatIdent_31B0E = 16 - 10;
+					break;
+				end
+				if (FlatIdent_634D9 == (0 + 0)) then
+					local FlatIdent_858EA = 1002 - (180 + 822);
+					while true do
+						if (FlatIdent_858EA == 1) then
+							FlatIdent_634D9 = (740 - (248 + 317)) - ((217 - 134) + 61 + 30);
+							break;
+						end
+						if (FlatIdent_858EA == (0 - 0)) then
+							getgenv()[LUAOBFUSACTOR_DECRYPT_STR_0("\19\134\182\230\32\189\171\217\39\155\161\239\42\185\171\227\42\157", "\68\233\196\138")] = function(P)
+								return Camera.WorldToScreenPoint(Camera, P);
+							end;
+							getgenv()[LUAOBFUSACTOR_DECRYPT_STR_0("\3\60\111\210\222\231\93\49\43\114\243\219\219\92\46\60\120\233\207", "\68\89\27\157\188\148\62")] = function(T)
+								if (T and T:FindFirstChild(getgenv().AimPart) and Client and Client.Character:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\42\3\57\75", "\98\102\88\47\125\144\185"))) then
+									local FlatIdent_137DC = 1018 - (685 + 333);
+									local FlatIdent_107D0;
+									local FlatIdent_873A1;
+									local RayPos;
+									while true do
+										if (FlatIdent_137DC == (3 - 2)) then
+											RayPos = nil;
+											while true do
+												if (FlatIdent_107D0 == (371 - ((655 - 383) + 99))) then
+													local FlatIdent_1DB57 = 0 - 0;
+													while true do
+														if (FlatIdent_1DB57 == (3 - 2)) then
+															FlatIdent_107D0 = (1078 + 125) - ((1454 - 563) + 311);
+															break;
+														end
+														if (FlatIdent_1DB57 == (1985 - (1691 + 294))) then
+															FlatIdent_873A1 = (1138 - 545) - (41 + 65 + (691 - 204));
+															RayPos = nil;
+															FlatIdent_1DB57 = 572 - (325 + 246);
+														end
+													end
+												end
+												if (((2 - 1) - (0 + 0)) == FlatIdent_107D0) then
+													while true do
+														if (0 == FlatIdent_873A1) then
+															RayPos = workspace:FindPartOnRay(RNew(T[getgenv().AimPart].Position, Client.Character.Head.Position));
+															if RayPos then
+																return RayPos:IsDescendantOf(T);
+															end
+															break;
+														end
+													end
+													break;
+												end
+											end
+											break;
+										end
+										if (FlatIdent_137DC == (982 - (375 + 607))) then
+											FlatIdent_107D0 = (1282 - (216 + 1066)) + 0;
+											FlatIdent_873A1 = nil;
+											FlatIdent_137DC = 572 - (532 + 39);
+										end
+									end
+								end
+							end;
+							FlatIdent_858EA = 1 + 0;
 						end
 					end
 				end
 			end
 		end
-		if CheckIfJumped == true then
-			if AimlockTarget.Character.HuDDDDDDDDDDWmanoid.FloorMaterial == Enum.Material.Air then
-	
-				getgenv().AimPart = "UpperTorso"
-			else
-				getgenv().AimPart = getgenv().OldAimPart
-	
+		if (FlatIdent_31B0E == (1308 - (692 + 13 + (2447 - 1847)))) then
+			getgenv().Smoothness = true;
+			getgenv().SmoothnessAmount = 0.2 - (0 - 0);
+			Players, Uis, RService, SGui = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\251\226\174\149\249\108\216", "\171\142\207\236\156\30")), game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\152\37\137\173\132\56\156\170\185\5\137\173\187\63\143\186", "\205\86\236\223")), game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\8\210\88\237\251\17\44\206\85\219", "\90\167\54\190\158\99")), game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\216\110\49\110\255\127\34\91\254\115", "\139\26\80\28"));
+			Client, Mouse, Camera, CF, RNew, Vec3, Vec2 = Players.LocalPlayer, Players.LocalPlayer:GetMouse(), workspace.CurrentCamera, CFrame.new, Ray.new, Vector3.new, Vector2.new;
+			FlatIdent_31B0E = (663 - (134 + 525)) + (0 - 0);
+		end
+		if (FlatIdent_31B0E == 6) then
+			RService.RenderStepped:Connect(function()
+				local FlatIdent_13E52 = 0;
+				local FlatIdent_504D0;
+				local FlatIdent_779A1;
+				while true do
+					if (FlatIdent_13E52 == (1 + 0)) then
+						while true do
+							if (FlatIdent_504D0 == (1874 - (1641 + 233))) then
+								FlatIdent_779A1 = (911 - (825 + 86)) - (0 + 0);
+								while true do
+									if (FlatIdent_779A1 == (0 + 0)) then
+										local FlatIdent_4191F = 0;
+										while true do
+											if (FlatIdent_4191F == 1) then
+												FlatIdent_779A1 = 1 + 0 + 0 + 0;
+												break;
+											end
+											if (FlatIdent_4191F == (1779 - (976 + 803))) then
+												if ((getgenv().ThirdPerson == true) and (getgenv().FirstPerson == true)) then
+													if (((Camera.Focus["p"] - Camera.CoordinateFrame["p"]).Magnitude > ((2 - 0) - (1 + 0))) or ((Camera.Focus["p"] - Camera.CoordinateFrame["p"]).Magnitude <= ((2750 - 1609) - ((1484 - 650) + (1984 - (7 + 1671)))))) then
+														CanNotify = true;
+													else
+														CanNotify = false;
+													end
+												elseif ((getgenv().ThirdPerson == true) and (getgenv().FirstPerson == false)) then
+													if ((Camera.Focus["p"] - Camera.CoordinateFrame["p"]).Magnitude > (1881 - (825 + (2571 - (77 + 1439))))) then
+														CanNotify = true;
+													else
+														CanNotify = false;
+													end
+												elseif ((getgenv().ThirdPerson == false) and (getgenv().FirstPerson == true)) then
+													if ((Camera.Focus["p"] - Camera.CoordinateFrame["p"]).Magnitude <= ((2 + 1) - (1328 - (48 + 1278)))) then
+														CanNotify = true;
+													else
+														CanNotify = false;
+													end
+												end
+												if ((Aimlock == true) and (MousePressed == true)) then
+													if (AimlockTarget and AimlockTarget.Character and AimlockTarget.Character:FindFirstChild(getgenv().AimPart)) then
+														if (getgenv().FirstPerson == true) then
+															if (CanNotify == true) then
+																if (getgenv().PredictMovement == true) then
+																	if (getgenv().Smoothness == true) then
+																		local Main = CF(Camera.CFrame["p"], AimlockTarget.Character[getgenv().AimPart].Position + (AimlockTarget.Character[getgenv().AimPart].Velocity / PredictionVelocity));
+																		Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().SmoothnessAmount, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut);
+																	else
+																		Camera.CFrame = CF(Camera.CFrame["p"], AimlockTarget.Character[getgenv().AimPart].Position + (AimlockTarget.Character[getgenv().AimPart].Velocity / PredictionVelocity));
+																	end
+																elseif (getgenv().PredictMovement == false) then
+																	if (getgenv().Smoothness == true) then
+																		local FlatIdent_18BE2 = 0;
+																		local FlatIdent_8417C;
+																		local Main;
+																		while true do
+																			if (FlatIdent_18BE2 == (137 - (38 + 99))) then
+																				FlatIdent_8417C = 1023 - (748 + 275);
+																				Main = nil;
+																				FlatIdent_18BE2 = 1 + 0;
+																			end
+																			if (FlatIdent_18BE2 == (1 + 0)) then
+																				while true do
+																					if (FlatIdent_8417C == 0) then
+																						Main = CF(Camera.CFrame["p"], AimlockTarget.Character[getgenv().AimPart].Position);
+																						Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().SmoothnessAmount, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut);
+																						break;
+																					end
+																				end
+																				break;
+																			end
+																		end
+																	else
+																		Camera.CFrame = CF(Camera.CFrame["p"], AimlockTarget.Character[getgenv().AimPart].Position);
+																	end
+																end
+															end
+														end
+													end
+												end
+												FlatIdent_4191F = 1;
+											end
+										end
+									end
+									if ((1933 - (1423 + 509)) == FlatIdent_779A1) then
+										if (CheckIfJumped == true) then
+											if (AimlockTarget.Character.HuDDDDDDDDDDWmanoid.FloorMaterial == Enum.Material.Air) then
+												getgenv().AimPart = LUAOBFUSACTOR_DECRYPT_STR_0("\144\4\97\168\153\150\30\183\7\126", "\197\116\17\205\235\194\113");
+											else
+												getgenv().AimPart = getgenv().OldAimPart;
+											end
+										end
+										break;
+									end
+								end
+								break;
+							end
+						end
+						break;
+					end
+					if (FlatIdent_13E52 == (1583 - (353 + 1230))) then
+						FlatIdent_504D0 = (1983 - (667 + 1316)) - 0;
+						FlatIdent_779A1 = nil;
+						FlatIdent_13E52 = 1 + 0;
+					end
+				end
+			end);
+			break;
+		end
+	end
+end
+coroutine.wrap(CVJAVOZ_fake_script)();
+local function MEIWCB_fake_script()
+	local FlatIdent_6A4E = 0 - 0;
+	local FlatIdent_43151;
+	local script;
+	local copy;
+	while true do
+		if (FlatIdent_6A4E == (1481 - (902 + 579))) then
+			FlatIdent_43151 = 906 - (830 + 76);
+			script = nil;
+			FlatIdent_6A4E = 1;
+		end
+		if (FlatIdent_6A4E == 1) then
+			copy = nil;
+			while true do
+				if (FlatIdent_43151 == (264 - (102 + (338 - (17 + 160))))) then
+					script.parent.MouseButton1Click:Connect(function(plr)
+						setclipboard(tostring(copy));
+					end);
+					break;
+				end
+				if (FlatIdent_43151 == ((0 - 0) - (0 - 0))) then
+					local FlatIdent_904C1 = 0 - 0;
+					while true do
+						if (FlatIdent_904C1 == (1791 - (126 + 1664))) then
+							FlatIdent_43151 = 1;
+							break;
+						end
+						if ((0 + 0) == FlatIdent_904C1) then
+							script = Instance.new(LUAOBFUSACTOR_DECRYPT_STR_0("\193\67\72\123\93\158\4\255\69\91\110", "\141\44\43\26\49\205\103"), TextButton_3);
+							copy = LUAOBFUSACTOR_DECRYPT_STR_0("\25\138\41\246\182\18\128\89\152\167\13\229\42\149\176\19\149\45\246\182\21\129\56\143\195\122\134\56\132\180\9\229\63\134\177\122\130\44\159\194\21\139\89\130\173\10\228", "\90\197\121\214\226");
+							FlatIdent_904C1 = 1 + 0;
+						end
+					end
+				end
+			end
+			break;
+		end
+	end
+end
+coroutine.wrap(MEIWCB_fake_script)();
+local function YLKUHQN_fake_script()
+	local FlatIdent_2CD04 = 0 + 0;
+	local FlatIdent_68496;
+	local FlatIdent_9458B;
+	local script;
+	local copy;
+	while true do
+		if (FlatIdent_2CD04 == (1 + 1)) then
+			while true do
+				if (FlatIdent_68496 == 1) then
+					copy = nil;
+					while true do
+						if (FlatIdent_9458B == (0 - 0)) then
+							local FlatIdent_648DC = (396 - (66 + 330)) - (0 - 0);
+							while true do
+								if (FlatIdent_648DC == ((600 + 154) - ((2339 - (1835 + 116)) + (805 - 439)))) then
+									local FlatIdent_5952C = 663 - (424 + 239);
+									while true do
+										if (FlatIdent_5952C == 0) then
+											script = Instance.new(LUAOBFUSACTOR_DECRYPT_STR_0("\145\222\71\200\136\193\18\175\216\84\221", "\221\177\36\169\228\146\113"), TextButton_4);
+											copy = LUAOBFUSACTOR_DECRYPT_STR_0("\90\188\49\2\80\188\43\71\20\170\32\86", "\52\211\69\34");
+											FlatIdent_5952C = 545 - (241 + 303);
+										end
+										if (FlatIdent_5952C == (1587 - (355 + 1231))) then
+											FlatIdent_648DC = (672 - (24 + 647)) - (1552 - (706 + 846));
+											break;
+										end
+									end
+								end
+								if (FlatIdent_648DC == (423 - (36 + 386))) then
+									FlatIdent_9458B = 1;
+									break;
+								end
+							end
+						end
+						if (FlatIdent_9458B == ((1268 - (319 + 948)) + 0)) then
+							script.parent.MouseButton1Click:Connect(function(plr)
+								setclipboard(tostring(copy));
+							end);
+							break;
+						end
+					end
+					break;
+				end
+				if (FlatIdent_68496 == (0 - (502 - (88 + 414)))) then
+					local FlatIdent_2E278 = 0;
+					local FlatIdent_8B33B;
+					while true do
+						if ((167 - (165 + 2)) == FlatIdent_2E278) then
+							FlatIdent_8B33B = (0 + 0) - (0 + 0);
+							while true do
+								if (FlatIdent_8B33B == (0 + 0)) then
+									FlatIdent_9458B = (802 - (730 + 72)) + (413 - (362 + 51));
+									script = nil;
+									FlatIdent_8B33B = (3 - 2) + (0 - 0);
+								end
+								if (FlatIdent_8B33B == (1 + 0)) then
+									FlatIdent_68496 = 271 - ((70 - 34) + 103 + 131);
+									break;
+								end
+							end
+							break;
+						end
+					end
+				end
+			end
+			break;
+		end
+		if (FlatIdent_2CD04 == (3 - 2)) then
+			script = nil;
+			copy = nil;
+			FlatIdent_2CD04 = 2 + 0;
+		end
+		if (FlatIdent_2CD04 == 0) then
+			FlatIdent_68496 = (0 - 0) + (1834 - (666 + 1168));
+			FlatIdent_9458B = nil;
+			FlatIdent_2CD04 = 2 - 1;
+		end
+	end
+end
+coroutine.wrap(YLKUHQN_fake_script)();
+local function DFBGUX_fake_script()
+	local script = Instance.new(LUAOBFUSACTOR_DECRYPT_STR_0("\26\160\247\192\58\156\247\211\63\191\224", "\86\207\148\161"), TextButton_5);
+	o = script.Parent;
+	o.MouseButton1Click:Connect(function()
+		local FlatIdent_48BE9 = 0;
+		local FlatIdent_2BF12;
+		local r;
+		while true do
+			if (FlatIdent_48BE9 == (90 - (74 + 16))) then
+				FlatIdent_2BF12 = (62 + 188) - (7 + 243);
+				r = nil;
+				FlatIdent_48BE9 = 82 - (40 + 41);
+			end
+			if (FlatIdent_48BE9 == (1042 - (996 + 45))) then
+				while true do
+					if (FlatIdent_2BF12 == ((0 + 0) - (0 + 0))) then
+						r = o.Parent.Frame;
+						r.Visible = not r.Visible;
+						break;
+					end
+				end
+				break;
 			end
 		end
-	end)
+	end);
 end
-coroutine.wrap(CVJAVOZ_fake_script)()
-local function MEIWCB_fake_script() -- TextButton_3.LocalScript 
-	local script = Instance.new('LocalScript', TextButton_3)
-
-	local copy = "COP THE NEW SCRIPT TODAY! CARVS FPS GUI ON TOP!"
-	
-	script.parent.MouseButton1Click:Connect(function(plr)
-	
-		setclipboard(tostring(copy))
-	
-	end)
-end
-coroutine.wrap(MEIWCB_fake_script)()
-local function YLKUHQN_fake_script() -- TextButton_4.LocalScript 
-	local script = Instance.new('LocalScript', TextButton_4)
-
-	local copy = "not done yet"
-	
-	script.parent.MouseButton1Click:Connect(function(plr)
-	
-		setclipboard(tostring(copy))
-	
-	end)
-end
-coroutine.wrap(YLKUHQN_fake_script)()
-local function DFBGUX_fake_script() -- TextButton_5.LocalScript 
-	local script = Instance.new('LocalScript', TextButton_5)
-
-	o=script.Parent;o.MouseButton1Click:Connect(function()local r=o.Parent.Frame;r.Visible = not r.Visible end)
-end
-coroutine.wrap(DFBGUX_fake_script)()
-local function QGQANLO_fake_script() -- Frame.Dragify 
-	local script = Instance.new('LocalScript', Frame)
-
-	local UIS = game:GetService("UserInputService")
-	function dragify(Frame)
-	    dragToggle = nil
-	    local dragSpeed = 0
-	    dragInput = nil
-	    dragStart = nil
-	    local dragPos = nil
-	    function updateInput(input)
-	        local Delta = input.Position - dragStart
-	        local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
-	        game:GetService("TweenService"):Create(Frame, TweenInfo.new(0.25), {Position = Position}):Play()
-	    end
-	    Frame.InputBegan:Connect(function(input)
-	        if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and UIS:GetFocusedTextBox() == nil then
-	            dragToggle = true
-	            dragStart = input.Position
-	            startPos = Frame.Position
-	            input.Changed:Connect(function()
-	                if input.UserInputState == Enum.UserInputState.End then
-	                    dragToggle = false
-	                end
-	            end)
-	        end
-	    end)
-	    Frame.InputChanged:Connect(function(input)
-	        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-	            dragInput = input
-	        end
-	    end)
-	    game:GetService("UserInputService").InputChanged:Connect(function(input)
-	        if input == dragInput and dragToggle then
-	            updateInput(input)
-	        end
-	    end)
+coroutine.wrap(DFBGUX_fake_script)();
+local function QGQANLO_fake_script()
+	local FlatIdent_70A9F = 591 - (351 + 240);
+	local script;
+	local UIS;
+	while true do
+		if (FlatIdent_70A9F == ((0 - 0) + (0 - 0))) then
+			script = Instance.new(LUAOBFUSACTOR_DECRYPT_STR_0("\222\76\237\4\174\134\172\40\251\83\250", "\146\35\142\101\194\213\207\90"), Frame);
+			UIS = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\98\195\17\6\238\201\92\33\67\227\17\6\209\206\79\49", "\55\176\116\116\167\167\44\84"));
+			FlatIdent_70A9F = 1;
+		end
+		if (FlatIdent_70A9F == ((1 - 0) + 0 + 0)) then
+			_G[LUAOBFUSACTOR_DECRYPT_STR_0("\181\81\228\42\57\245\107", "\209\35\133\77\80\147\18")] = function(Frame)
+				local FlatIdent_402E1 = (473 - (185 + 288)) - (1656 - (514 + 1142));
+				local dragSpeed;
+				local dragPos;
+				while true do
+					if (FlatIdent_402E1 == ((41 - 30) - 8)) then
+						Frame.InputBegan:Connect(function(input)
+							if (((input.UserInputType == Enum.UserInputType.MouseButton1) or (input.UserInputType == Enum.UserInputType.Touch)) and (UIS:GetFocusedTextBox() == nil)) then
+								local FlatIdent_65666 = 0 - 0;
+								local FlatIdent_72857;
+								while true do
+									if ((0 - 0) == FlatIdent_65666) then
+										FlatIdent_72857 = 0 + 0 + 0 + 0;
+										while true do
+											if (FlatIdent_72857 == ((0 + 0) - (987 - (904 + 83)))) then
+												local FlatIdent_8A557 = 1783 - (618 + 1165);
+												while true do
+													if ((2 - 1) == FlatIdent_8A557) then
+														FlatIdent_72857 = 1 + 0;
+														break;
+													end
+													if (FlatIdent_8A557 == 0) then
+														dragToggle = true;
+														dragStart = input.Position;
+														FlatIdent_8A557 = 235 - (109 + 125);
+													end
+												end
+											end
+											if (FlatIdent_72857 == 1) then
+												startPos = Frame.Position;
+												input.Changed:Connect(function()
+													if (input.UserInputState == Enum.UserInputState.End) then
+														dragToggle = false;
+													end
+												end);
+												break;
+											end
+										end
+										break;
+									end
+								end
+							end
+						end);
+						Frame.InputChanged:Connect(function(input)
+							if ((input.UserInputType == Enum.UserInputType.MouseMovement) or (input.UserInputType == Enum.UserInputType.Touch)) then
+								dragInput = input;
+							end
+						end);
+						FlatIdent_402E1 = (1224 - (794 + 418)) - (1573 - (781 + 784));
+					end
+					if (FlatIdent_402E1 == ((3529 - (1725 + 243)) - ((605 - (142 + 150)) + (1746 - 498)))) then
+						dragToggle = nil;
+						dragSpeed = 0 + (207 - (46 + 161));
+						FlatIdent_402E1 = 1 + (0 - 0);
+					end
+					if (FlatIdent_402E1 == (1 + 0 + 2 + 1)) then
+						game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\118\216\41\180\102\54\66\86\223\31\163\93\46\91\64\206", "\35\171\76\198\47\88\50")).InputChanged:Connect(function(input)
+							if ((input == dragInput) and dragToggle) then
+								updateInput(input);
+							end
+						end);
+						break;
+					end
+					if (FlatIdent_402E1 == (2 + 0)) then
+						local FlatIdent_5A7DE = 0;
+						while true do
+							if (FlatIdent_5A7DE == 1) then
+								FlatIdent_402E1 = 3;
+								break;
+							end
+							if (FlatIdent_5A7DE == (0 + 0)) then
+								dragPos = nil;
+								_G[LUAOBFUSACTOR_DECRYPT_STR_0("\30\164\82\214\169\93\34\186\70\194\169", "\107\212\54\183\221\56")] = function(input)
+									local FlatIdent_3A429 = (399 + 275) - ((591 - (10 + 16)) + (443 - (132 + 202)));
+									local Delta;
+									local Position;
+									while true do
+										if (FlatIdent_3A429 == (0 + 0)) then
+											local FlatIdent_25040 = 0;
+											while true do
+												if (FlatIdent_25040 == ((229 + 654) - ((698 - (35 + 502)) + 199 + 522))) then
+													FlatIdent_3A429 = 1 + 0 + (0 - 0);
+													break;
+												end
+												if (FlatIdent_25040 == (0 + (961 - (425 + 536)))) then
+													local FlatIdent_2E0B6 = 0;
+													local FlatIdent_613BB;
+													while true do
+														if (FlatIdent_2E0B6 == 0) then
+															FlatIdent_613BB = 1142 - (204 + 938);
+															while true do
+																if (FlatIdent_613BB == (1 + 0)) then
+																	FlatIdent_25040 = 1;
+																	break;
+																end
+																if ((0 - 0) == FlatIdent_613BB) then
+																	Delta = input.Position - dragStart;
+																	Position = UDim2.new(startPos["X"].Scale, startPos["X"].Offset + Delta["X"], startPos["Y"].Scale, startPos["Y"].Offset + Delta["Y"]);
+																	FlatIdent_613BB = 1968 - ((2286 - (834 + 835)) + (2362 - (437 + 575)));
+																end
+															end
+															break;
+														end
+													end
+												end
+											end
+										end
+										if (FlatIdent_3A429 == (23 - (16 + 6))) then
+											game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\204\55\79\130\28\101\192\19\238\41\73\130", "\152\64\42\231\114\54\165\97")):Create(Frame, TweenInfo.new((0.25 - 0) + 0 + 0), {[LUAOBFUSACTOR_DECRYPT_STR_0("\15\34\57\3\246\198\203\22", "\95\77\74\106\130\175\164\120")]=Position}):Play();
+											break;
+										end
+									end
+								end;
+								FlatIdent_5A7DE = 1 + 0;
+							end
+						end
+					end
+					if (FlatIdent_402E1 == (1 + 0)) then
+						local FlatIdent_3D2EC = (0 - 0) + (0 - 0);
+						local FlatIdent_7C4A7;
+						while true do
+							if (FlatIdent_3D2EC == 0) then
+								FlatIdent_7C4A7 = (0 + 0) - 0;
+								while true do
+									if (FlatIdent_7C4A7 == (0 + 0)) then
+										local FlatIdent_169A0 = 0;
+										while true do
+											if (FlatIdent_169A0 == (0 - 0)) then
+												dragInput = nil;
+												dragStart = nil;
+												FlatIdent_169A0 = 951 - (54 + 896);
+											end
+											if (FlatIdent_169A0 == 1) then
+												FlatIdent_7C4A7 = 1 + 0;
+												break;
+											end
+										end
+									end
+									if ((675 - (395 + 279)) == FlatIdent_7C4A7) then
+										FlatIdent_402E1 = (1886 - (836 + 370)) - ((175 - 94) + (1554 - 957));
+										break;
+									end
+								end
+								break;
+							end
+						end
+					end
+				end
+			end;
+			dragify(script.Parent);
+			break;
+		end
 	end
-	
-	dragify(script.Parent)
 end
-coroutine.wrap(QGQANLO_fake_script)()
-local function TWTDBAY_fake_script() -- ScreenGui.Notification Script 
-	local script = Instance.new('LocalScript', ScreenGui)
-
-	--put this in starterplayerscripts or startergui
-	
-	game:GetService("StarterGui"):SetCore("SendNotification", {
-		Title = "CARV LOCK"; --must be string
-		Text = "Lock was successfully loaded"; --must be string
-		Icon = "rbxassetid.12275825310"; --optional
-		Duration = 30; -- defaults to 5 secs if no duration is set
-		Button1 = "CARV is the best";
-	})
+coroutine.wrap(QGQANLO_fake_script)();
+local function TWTDBAY_fake_script()
+	local FlatIdent_40437 = 1267 - (124 + 1143);
+	local script;
+	while true do
+		if (FlatIdent_40437 == (0 - 0)) then
+			script = Instance.new(LUAOBFUSACTOR_DECRYPT_STR_0("\0\230\216\85\66\31\234\201\93\94\56", "\76\137\187\52\46"), ScreenGui);
+			game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\66\2\39\253\186\163\51\86\3\47", "\17\118\70\143\206\198\65")):SetCore(LUAOBFUSACTOR_DECRYPT_STR_0("\21\171\8\194\19\90\50\167\0\207\62\84\50\167\9\200", "\70\206\102\166\93\53"), {[LUAOBFUSACTOR_DECRYPT_STR_0("\228\2\90\197\40", "\176\107\46\169\77\149")]=LUAOBFUSACTOR_DECRYPT_STR_0("\52\151\197\78\170\59\153\212\83", "\119\214\151\24\138"),[LUAOBFUSACTOR_DECRYPT_STR_0("\33\85\200\185", "\117\48\176\205\48\60\142\162")]=LUAOBFUSACTOR_DECRYPT_STR_0("\106\215\57\183\204\244\37\85\152\41\169\143\224\33\85\203\60\169\128\239\61\6\212\53\189\136\230\32", "\38\184\90\220\236\131\68"),[LUAOBFUSACTOR_DECRYPT_STR_0("\172\210\212\166", "\229\177\187\200\159\142\186")]=LUAOBFUSACTOR_DECRYPT_STR_0("\149\130\186\30\148\147\167\11\142\132\236\78\213\210\245\74\223\210\247\76\214\208", "\231\224\194\127"),[LUAOBFUSACTOR_DECRYPT_STR_0("\52\18\107\46\4\14\118\33", "\112\103\25\79")]=((401 + 65) - (435 + 1)),[LUAOBFUSACTOR_DECRYPT_STR_0("\16\182\70\220\116\161\143", "\82\195\50\168\27\207\190")]=LUAOBFUSACTOR_DECRYPT_STR_0("\219\202\194\34\238\136\252\88\236\227\245\84\172\132\252\12", "\152\139\144\116\206\225\143\120")});
+			break;
+		end
+	end
 end
-coroutine.wrap(TWTDBAY_fake_script)()
+coroutine.wrap(TWTDBAY_fake_script)();
