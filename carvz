@@ -8,10 +8,10 @@ local Frame = Instance.new("Frame")
 local Frame_2 = Instance.new("Frame")
 local TextButton = Instance.new("TextButton")
 local TextButton_2 = Instance.new("TextButton")
-local TextLabel = Instance.new("TextLabel")
 local TextButton_3 = Instance.new("TextButton")
-local TextLabel_2 = Instance.new("TextLabel")
 local TextButton_4 = Instance.new("TextButton")
+local TextLabel = Instance.new("TextLabel")
+local TextButton_5 = Instance.new("TextButton")
 
 --Properties:
 
@@ -19,16 +19,17 @@ ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(0, 65, 2)
-Frame.BackgroundTransparency = 0.300
-Frame.Position = UDim2.new(0.214285716, 0, 0.1796875, 0)
-Frame.Size = UDim2.new(0, 201, 0, 42)
+Frame.BackgroundColor3 = Color3.fromRGB(65, 0, 0)
+Frame.BackgroundTransparency = 0.400
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.268707484, 0, 0.189302891, 0)
+Frame.Size = UDim2.new(0, 318, 0, 34)
 
 Frame_2.Parent = Frame
-Frame_2.BackgroundColor3 = Color3.fromRGB(0, 65, 2)
-Frame_2.BackgroundTransparency = 0.300
-Frame_2.Position = UDim2.new(-0.000198976137, 0, 0.988571525, 0)
-Frame_2.Size = UDim2.new(0, 201, 0, 159)
+Frame_2.BackgroundColor3 = Color3.fromRGB(65, 0, 0)
+Frame_2.BackgroundTransparency = 0.800
+Frame_2.Position = UDim2.new(0, 0, 0.988572061, 0)
+Frame_2.Size = UDim2.new(0, 317, 0, 298)
 
 TextButton.Parent = Frame_2
 TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -44,7 +45,7 @@ TextButton.TextWrapped = true
 TextButton_2.Parent = Frame_2
 TextButton_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextButton_2.BackgroundTransparency = 2.000
-TextButton_2.Position = UDim2.new(0, 0, 0.207547173, 0)
+TextButton_2.Position = UDim2.new(0, 0, 0.110231735, 0)
 TextButton_2.Size = UDim2.new(0, 201, 0, 33)
 TextButton_2.Font = Enum.Font.SourceSans
 TextButton_2.Text = "Smoothed"
@@ -53,20 +54,10 @@ TextButton_2.TextScaled = true
 TextButton_2.TextSize = 14.000
 TextButton_2.TextWrapped = true
 
-TextLabel.Parent = Frame_2
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.BackgroundTransparency = 2.000
-TextLabel.Position = UDim2.new(0.00497512426, 0, 0.842767417, 0)
-TextLabel.Size = UDim2.new(0, 200, 0, 25)
-TextLabel.Font = Enum.Font.SourceSans
-TextLabel.Text = "script at gg/synx for blatant "
-TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextSize = 14.000
-
 TextButton_3.Parent = Frame_2
 TextButton_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextButton_3.BackgroundTransparency = 2.000
-TextButton_3.Position = UDim2.new(-0.00497512426, 0, 0.396226406, 0)
+TextButton_3.Position = UDim2.new(-0.0018403281, 0, 0.218374059, 0)
 TextButton_3.Size = UDim2.new(0, 201, 0, 33)
 TextButton_3.Font = Enum.Font.SourceSans
 TextButton_3.Text = "Copy Advertise"
@@ -75,32 +66,44 @@ TextButton_3.TextScaled = true
 TextButton_3.TextSize = 14.000
 TextButton_3.TextWrapped = true
 
-TextLabel_2.Parent = Frame
-TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_2.BackgroundTransparency = 3.000
-TextLabel_2.Size = UDim2.new(0, 154, 0, 41)
-TextLabel_2.Font = Enum.Font.SourceSans
-TextLabel_2.Text = "Carvs fps gui"
-TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_2.TextScaled = true
-TextLabel_2.TextSize = 14.000
-TextLabel_2.TextWrapped = true
-
-TextButton_4.Parent = Frame
+TextButton_4.Parent = Frame_2
 TextButton_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextButton_4.BackgroundTransparency = 2.000
-TextButton_4.Position = UDim2.new(0.766169131, 0, 0, 0)
-TextButton_4.Size = UDim2.new(0, 46, 0, 41)
+TextButton_4.Position = UDim2.new(0.368065625, 0, 0.886159301, 0)
+TextButton_4.Size = UDim2.new(0, 201, 0, 33)
 TextButton_4.Font = Enum.Font.SourceSans
-TextButton_4.Text = "-"
+TextButton_4.Text = "Copy rage loadstring"
 TextButton_4.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextButton_4.TextScaled = true
 TextButton_4.TextSize = 14.000
 TextButton_4.TextWrapped = true
 
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 3.000
+TextLabel.Size = UDim2.new(0, 201, 0, 33)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Carvs FPS GUI v0.2"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
+
+TextButton_5.Parent = Frame
+TextButton_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_5.BackgroundTransparency = 2.000
+TextButton_5.Position = UDim2.new(0.853943467, 0, 0, 0)
+TextButton_5.Size = UDim2.new(0, 46, 0, 33)
+TextButton_5.Font = Enum.Font.SourceSans
+TextButton_5.Text = "-"
+TextButton_5.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_5.TextScaled = true
+TextButton_5.TextSize = 14.000
+TextButton_5.TextWrapped = true
+
 -- Scripts:
 
-local function ZPIKFZD_fake_script() -- TextButton.LocalScript 
+local function CVJAVOZ_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	--put this in starterplayerscripts or startergui
@@ -118,7 +121,7 @@ local function ZPIKFZD_fake_script() -- TextButton.LocalScript
 	
 	
 	getgenv().OldAimPart = "UpperTorso"
-	getgenv().AimPart = "UpperTorso" -- For R15 Games: {UpperTorso, LowerTorso, HumanoidRootPart, Head} | For R6 Games: {Head, Torso, HumanoidRootPart}  
+	getgenv().AimPart = "Head" -- For R15 Games: {UpperTorso, LowerTorso, HumanoidRootPart, Head} | For R6 Games: {Head, Torso, HumanoidRootPart}  
 	getgenv().AimlockKey = "q"
 	getgenv().AimRadius = 30 -- How far away from someones character you want to lock on at
 	getgenv().ThirdPerson = true
@@ -128,7 +131,7 @@ local function ZPIKFZD_fake_script() -- TextButton.LocalScript
 	getgenv().PredictionVelocity = 6.78211
 	getgenv().CheckIfJumped = true
 	getgenv().Smoothness = true
-	getgenv().SmoothnessAmount = 0.3235
+	getgenv().SmoothnessAmount = 0.2
 	
 	local Players, Uis, RService, SGui = game:GetService"Players", game:GetService"UserInputService", game:GetService"RunService", game:GetService"StarterGui";
 	local Client, Mouse, Camera, CF, RNew, Vec3, Vec2 = Players.LocalPlayer, Players.LocalPlayer:GetMouse(), workspace.CurrentCamera, CFrame.new, Ray.new, Vector3.new, Vector2.new;
@@ -288,8 +291,8 @@ local function ZPIKFZD_fake_script() -- TextButton.LocalScript
 		end
 	end)
 end
-coroutine.wrap(ZPIKFZD_fake_script)()
-local function UMPZQ_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(CVJAVOZ_fake_script)()
+local function MEIWCB_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	local copy = "COP THE NEW SCRIPT TODAY! CARVS FPS GUI ON TOP!"
@@ -300,14 +303,26 @@ local function UMPZQ_fake_script() -- TextButton_3.LocalScript
 	
 	end)
 end
-coroutine.wrap(UMPZQ_fake_script)()
-local function THWLV_fake_script() -- TextButton_4.LocalScript 
+coroutine.wrap(MEIWCB_fake_script)()
+local function YLKUHQN_fake_script() -- TextButton_4.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_4)
+
+	local copy = "not done yet"
+	
+	script.parent.MouseButton1Click:Connect(function(plr)
+	
+		setclipboard(tostring(copy))
+	
+	end)
+end
+coroutine.wrap(YLKUHQN_fake_script)()
+local function DFBGUX_fake_script() -- TextButton_5.LocalScript 
+	local script = Instance.new('LocalScript', TextButton_5)
 
 	o=script.Parent;o.MouseButton1Click:Connect(function()local r=o.Parent.Frame;r.Visible = not r.Visible end)
 end
-coroutine.wrap(THWLV_fake_script)()
-local function HPAO_fake_script() -- Frame.Dragify 
+coroutine.wrap(DFBGUX_fake_script)()
+local function QGQANLO_fake_script() -- Frame.Dragify 
 	local script = Instance.new('LocalScript', Frame)
 
 	local UIS = game:GetService("UserInputService")
@@ -348,8 +363,8 @@ local function HPAO_fake_script() -- Frame.Dragify
 	
 	dragify(script.Parent)
 end
-coroutine.wrap(HPAO_fake_script)()
-local function FDUOM_fake_script() -- ScreenGui.Notification Script 
+coroutine.wrap(QGQANLO_fake_script)()
+local function TWTDBAY_fake_script() -- ScreenGui.Notification Script 
 	local script = Instance.new('LocalScript', ScreenGui)
 
 	--put this in starterplayerscripts or startergui
@@ -362,4 +377,4 @@ local function FDUOM_fake_script() -- ScreenGui.Notification Script
 		Button1 = "CARV is the best";
 	})
 end
-coroutine.wrap(FDUOM_fake_script)()
+coroutine.wrap(TWTDBAY_fake_script)()
