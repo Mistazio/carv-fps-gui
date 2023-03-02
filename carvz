@@ -19,15 +19,17 @@ ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(65, 0, 0)
-Frame.BackgroundTransparency = 0.400
+Frame.BackgroundColor3 = Color3.fromRGB(0, 81, 255)
+Frame.BackgroundTransparency = 0.500
 Frame.BorderSizePixel = 0
 Frame.Position = UDim2.new(0.268707484, 0, 0.189302891, 0)
 Frame.Size = UDim2.new(0, 318, 0, 34)
 
 Frame_2.Parent = Frame
-Frame_2.BackgroundColor3 = Color3.fromRGB(65, 0, 0)
-Frame_2.BackgroundTransparency = 0.800
+Frame_2.BackgroundColor3 = Color3.fromRGB(0, 26, 255)
+Frame_2.BackgroundTransparency = 3.000
+Frame_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame_2.BorderSizePixel = 3
 Frame_2.Position = UDim2.new(0, 0, 0.988572061, 0)
 Frame_2.Size = UDim2.new(0, 317, 0, 298)
 
@@ -69,7 +71,7 @@ TextButton_3.TextWrapped = true
 TextButton_4.Parent = Frame_2
 TextButton_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextButton_4.BackgroundTransparency = 2.000
-TextButton_4.Position = UDim2.new(0.368065625, 0, 0.886159301, 0)
+TextButton_4.Position = UDim2.new(-0.00101953908, 0, 0.329112291, 0)
 TextButton_4.Size = UDim2.new(0, 201, 0, 33)
 TextButton_4.Font = Enum.Font.SourceSans
 TextButton_4.Text = "Copy rage loadstring"
@@ -103,7 +105,7 @@ TextButton_5.TextWrapped = true
 
 -- Scripts:
 
-local function CVJAVOZ_fake_script() -- TextButton.LocalScript 
+local function RMDY_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	--put this in starterplayerscripts or startergui
@@ -120,8 +122,71 @@ local function CVJAVOZ_fake_script() -- TextButton.LocalScript
 	
 	
 	
+	local hotkey = "p" -- toggle key
+	local mouse = game.Players.LocalPlayer:GetMouse()
+	
+	
+	
+	mouse.KeyDown:Connect(function(key)
+		if key == hotkey then
+			if getgenv().ValiantAimHacks.SilentAimEnabled == true then
+				getgenv().ValiantAimHacks.SilentAimEnabled = false
+			else
+				getgenv().ValiantAimHacks.SilentAimEnabled = true
+			end
+		end
+	end)
+	
+	
+	-- // Services
+	local Players = game:GetService("Players")
+	
+	-- // Vars
+	local LocalPlayer = Players.LocalPlayer
+	local accomidationfactor = 0.12567724521
+	
+	-- // Silent Aim Module
+	local SilentAim = loadstring(game:HttpGet("https://pastebin.com/raw/2f0mGbMP"))()
+	SilentAim.TeamCheck = false
+	-- // Metatable vars
+	local mt = getrawmetatable(game)
+	local backupindex = mt.__index
+	setreadonly(mt, false)
+	
+	-- // Check if player is down
+	SilentAim.checkSilentAim = function()
+		local checkA = (SilentAim.SilentAimEnabled == true and SilentAim.Selected ~= LocalPlayer)
+		local playerCharacter = SilentAim.Selected.Character
+		local daHood = (playerCharacter.BodyEffects["K.O"].Value == false or playerCharacter:FindFirstChild("GRABBING_CONSTRAINT") ~= nil)
+	
+		return (checkA and daHood)
+	end
+	
+	-- // Hook
+	mt.__index = newcclosure(function(t, k)
+		if (t:IsA("Mouse") and (k == "Hit")) then
+			print(t, k)
+			local CPlayer = SilentAim.Selected
+			if (SilentAim.checkSilentAim()) then
+				if (CPlayer.Character:FindFirstChild("HumanoidRootPart")) then
+					return {p=(CPlayer.Character.HumanoidRootPart.CFrame.p+(CPlayer.Character.HumanoidRootPart.Velocity*accomidationfactor))}
+				end
+			end
+		end
+		return backupindex(t, k)
+	end)
+	
+	-- // Revert
+	setreadonly(mt, true)
+	getgenv().ValiantAimHacks.FOV = 60
+	
+	
+	
+	
+	
+	
 	getgenv().OldAimPart = "UpperTorso"
-	getgenv().AimPart = "HumanoidRootPart" -- For R15 Games: {UpperTorso, LowerTorso, HumanoidRootPart, Head} | For R6 Games: {Head, Torso, HumanoidRootPart}  
+	getgenv().AimPart = "Head" -- For R15 Games: {UpperTorso, LowerTorso, HumanoidRootPart, Head} | For R6 Games: {Head, Torso, HumanoidRootPart}  
 	getgenv().AimlockKey = "q"
 	getgenv().AimRadius = 30 -- How far away from someones character you want to lock on at
 	getgenv().ThirdPerson = true
@@ -291,8 +356,8 @@ local function CVJAVOZ_fake_script() -- TextButton.LocalScript
 		end
 	end)
 end
-coroutine.wrap(CVJAVOZ_fake_script)()
-local function MEIWCB_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(RMDY_fake_script)()
+local function NFBOSN_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	local copy = "COP THE NEW SCRIPT TODAY! CARVS FPS GUI ON TOP!"
@@ -303,8 +368,8 @@ local function MEIWCB_fake_script() -- TextButton_3.LocalScript
 	
 	end)
 end
-coroutine.wrap(MEIWCB_fake_script)()
-local function YLKUHQN_fake_script() -- TextButton_4.LocalScript 
+coroutine.wrap(NFBOSN_fake_script)()
+local function ZSVTR_fake_script() -- TextButton_4.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_4)
 
 	local copy = "not done yet"
@@ -315,14 +380,14 @@ local function YLKUHQN_fake_script() -- TextButton_4.LocalScript
 	
 	end)
 end
-coroutine.wrap(YLKUHQN_fake_script)()
-local function DFBGUX_fake_script() -- TextButton_5.LocalScript 
+coroutine.wrap(ZSVTR_fake_script)()
+local function MCLP_fake_script() -- TextButton_5.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_5)
 
 	o=script.Parent;o.MouseButton1Click:Connect(function()local r=o.Parent.Frame;r.Visible = not r.Visible end)
 end
-coroutine.wrap(DFBGUX_fake_script)()
-local function QGQANLO_fake_script() -- Frame.Dragify 
+coroutine.wrap(MCLP_fake_script)()
+local function INPCU_fake_script() -- Frame.Dragify 
 	local script = Instance.new('LocalScript', Frame)
 
 	local UIS = game:GetService("UserInputService")
@@ -363,8 +428,8 @@ local function QGQANLO_fake_script() -- Frame.Dragify
 	
 	dragify(script.Parent)
 end
-coroutine.wrap(QGQANLO_fake_script)()
-local function TWTDBAY_fake_script() -- ScreenGui.Notification Script 
+coroutine.wrap(INPCU_fake_script)()
+local function OQLBN_fake_script() -- ScreenGui.Notification Script 
 	local script = Instance.new('LocalScript', ScreenGui)
 
 	--put this in starterplayerscripts or startergui
@@ -377,4 +442,4 @@ local function TWTDBAY_fake_script() -- ScreenGui.Notification Script
 		Button1 = "CARV is the best";
 	})
 end
-coroutine.wrap(TWTDBAY_fake_script)()
+coroutine.wrap(OQLBN_fake_script)()
